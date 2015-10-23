@@ -12,5 +12,8 @@
         "psr-4": {
             "IpadSlider\\": "src"
         }
+    },
+    "require": {
+        "jasny/db-mysql": "^1.1"
     }
 }

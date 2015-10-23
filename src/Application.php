@@ -11,4 +11,15 @@ namespace IpadSlider;
 
 class Application {
 
+	private function __construct() {
+
+//		self::_instance = new Application();
+
+	}
+
+
+	public static function getInstance() {
+
+	}
+
 } 
