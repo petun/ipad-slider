@@ -8,8 +8,9 @@
 
 use IpadSlider\Application;
 use IpadSlider\Model\IPersistent;
+use Jade\Jade;
 
-require_once("vendor/autoload.php");
+require_once("../vendor/autoload.php");
 
 Application::getInstance()->init();
 
@@ -18,3 +19,11 @@ $p = Application::getInstance()->getService('IPersistent');
 
 $slides = $p->getAllSlides();
 
+
+$jade = new Jade(array(
+	'prettyprint' => true,
+	'extension' => '.jade',
+	//'cache' => __DIR__.'/../cache/'
+));
+
+echo $jade->render(__DIR__ . '/../frontend/src/jade/index.jade', ['slides' => $slides]);

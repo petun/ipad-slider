@@ -9,6 +9,7 @@
 namespace IpadSlider\Handler;
 
 
+use Jade\Jade;
 use Vinelab\Rss\Rss;
 
 class RssResourceHandler implements IResourceHandler {
@@ -28,15 +29,30 @@ class RssResourceHandler implements IResourceHandler {
 		return $this->_feed != null;
 	}
 
+
+	/**
+	 * @return mixed|string
+	 * @throws \Exception
+	 */
 	public function renderHtml() {
-		$r =  print_r($this->_feed->info(), true);
-
 		$articles = $this->_feed->articles();
+		$result = [];
+		foreach ($articles as $article) {
+			$result[] = [
+				'pubDate' => $article->pubDate,
+				'title' => $article->title,
+				'description' => $article->description
+			];
+		}
 
-		$r .= $articles->last()->title;
 
 
+		$jade = new Jade(array(
+			'prettyprint' => false,
+			'extension' => '.jade',
+		));
 
-		return $r;
+
+		return $jade->render(__DIR__. '/../../frontend/src/jade/resource/rss.jade', ['articles' => $result]);
 	}
 }

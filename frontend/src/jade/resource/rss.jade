@@ -1,0 +1,6 @@
+.rss-feed
+    each article in articles
+        .rss-feed__item
+            .rss-feed__date= article.pubDate
+            a= article.title
+            .rss-feed__content!= article.description

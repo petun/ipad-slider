@@ -1,0 +1,9 @@
+extends ./layout/layout
+
+block content
+  .fotorama(data-allowfullscreen="true" data-width="100%" data-ratio="4/3")
+      each slide in slides
+          div.slide
+              .slide__title= slide.resource.name
+                  span= slide.resource.refresh_date
+              .slide__content!= slide.resource.html

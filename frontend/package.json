@@ -1,0 +1,36 @@
+{
+  "name": "html-starter-kit",
+  "version": "0.0.21",
+  "description": "Html Starter Kit with gulp, bower, sass and jade",
+  "main": "gulpfile.js",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/petun/html-starter-kit"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "bower": "^1.5.3",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-bower": "0.0.10",
+    "gulp-cache": "^0.3.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-jade": "^1.1.0",
+    "gulp-uglify": "^1.4.1",
+    "imagemin-pngquant": "^4.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "petun (petun911@gmail.com)",
+  "license": "ISC"
+}
