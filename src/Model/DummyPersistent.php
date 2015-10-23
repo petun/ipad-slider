@@ -47,4 +47,8 @@ class DummyPersistent implements IPersistent {
 	public function changeHtml(Resource $resource, $html) {
 		return true;
 	}
+
+	public function __construct($config = []) {
+		// TODO: Implement __construct() method.
+	}
 }

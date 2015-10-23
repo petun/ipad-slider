@@ -7,10 +7,14 @@
  */
 
 use IpadSlider\Application;
+use IpadSlider\Model\IPersistent;
 
 require_once("vendor/autoload.php");
 
 Application::getInstance()->init();
 
-$job = new IpadSlider\Fetcher();
-$job->processResources();
+/* @var $p IPersistent */
+$p = Application::getInstance()->getService('IPersistent');
+
+$slides = $p->getAllSlides();
+

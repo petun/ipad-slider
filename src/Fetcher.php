@@ -20,16 +20,19 @@ class Fetcher {
 
 		$resources = $p->getAllResources();
 
-		/** @var \IpadSlider\Model\Resource $resource */
-		foreach ($resources as $resource) {
-			if ($html = $resource->getSerializedData()) {
-				echo $html;
-				$p->changeHtml($resource, $html);
-			} else {
-				echo 'FAILED';
-			}
+		if ($resources) {
+			/** @var \IpadSlider\Model\Resource $resource */
+			foreach ($resources as $resource) {
+				if ($html = $resource->getSerializedData()) {
+					echo $html;
+					$p->changeHtml($resource, $html);
+				} else {
+					echo 'FAILED';
+				}
 
+			}
 		}
+
 	}
 
 } 

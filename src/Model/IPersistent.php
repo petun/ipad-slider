@@ -10,6 +10,9 @@ namespace IpadSlider\Model;
 
 
 interface IPersistent {
+
+	public function __construct($config = []);
+
 	public function getAllResources();
 
 	public function getAllSlides();

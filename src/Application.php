@@ -11,6 +11,7 @@ namespace IpadSlider;
 
 use IpadSlider\Helper\IServiceLocator;
 use IpadSlider\Helper\ServiceLocator;
+use IpadSlider\Model\DbPersistent;
 use IpadSlider\Model\DummyPersistent;
 
 class Application {
@@ -24,8 +25,13 @@ class Application {
 
 	private function __construct() {
 		$this->_config = require_once(dirname(__FILE__).'/../app/config.php');
+
+	}
+
+	public function init() {
 		$this->_initServiceLocator();
 	}
+
 
 	/**
 	 * prevent the instance from being cloned
@@ -45,6 +51,9 @@ class Application {
 	}
 
 
+	/**
+	 * @return Application
+	 */
 	public static function getInstance() {
 		if (null === static::$_instance) {
 			static::$_instance = new static;
@@ -54,11 +63,15 @@ class Application {
 
 	private function _initServiceLocator() {
 		$this->_serviceLocator = new ServiceLocator();
-		$this->_serviceLocator->addService('IPersistent', new DummyPersistent());
+		$this->_serviceLocator->addService('IPersistent', new DbPersistent($this->_config['database']));
 	}
 
 	public function getService($service) {
 		return $this->_serviceLocator->get($service);
+	}
+
+	public function config($key) {
+		return $this->_config[$key];
 	}
 
 } 
