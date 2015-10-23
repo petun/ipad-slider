@@ -1,0 +1,16 @@
+{
+    "name": "petun/ipad-slider",
+    "description": "description_text",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "author's name",
+            "email": "email@example.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "IpadSlider\\": "src"
+        }
+    }
+}
