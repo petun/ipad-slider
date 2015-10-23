@@ -21,10 +21,16 @@ class DummyPersistent implements IPersistent {
 		$r = new Resource();
 		$r->type = 'html';
 		$r->name = 'Test Alex';
-		$r->url = 'http://localhost/alex/dist/';
+		$r->url = 'http://localhost/';
+
+		$r2 = new Resource();
+		$r2->type = 'rss';
+		$r2->name = 'Rss Feed';
+		$r2->url = 'http://localhost/feed.rss';
 
 		return array(
-			$r
+			$r,
+			$r2
 		);
 	}
 

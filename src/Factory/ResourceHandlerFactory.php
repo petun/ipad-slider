@@ -17,13 +17,15 @@ class ResourceHandlerFactory {
 	 * @param $className
 	 * @param $url
 	 * @return IResourceHandler
+	 * @throws \Exception
 	 */
 	public static function get($className, $url) {
-		$fullClassName = '\\IpadSlider\\Handler\\' . $className . 'ResourceHandler';
+		$fullClassName = '\\IpadSlider\\Handler\\' . ucfirst($className)  . 'ResourceHandler';
 		if (class_exists($fullClassName)) {
 			return new $fullClassName($url);
 		}
-		return null;
+
+		throw new \Exception('Error. Class '.$fullClassName . ' not found');
 	}
 
 } 

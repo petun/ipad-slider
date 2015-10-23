@@ -9,12 +9,15 @@
 namespace IpadSlider;
 
 use IpadSlider\Model\DummyPersistent;
+use IpadSlider\Model\IPersistent;
 
 class Fetcher {
 
 	public function processResources() {
 
-		$p = new DummyPersistent();
+		/* @var $p IPersistent */
+		$p = Application::getInstance()->getService('IPersistent');
+
 		$resources = $p->getAllResources();
 
 		/** @var \IpadSlider\Model\Resource $resource */
