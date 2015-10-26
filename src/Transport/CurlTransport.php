@@ -26,6 +26,9 @@ class CurlTransport {
 		//return the transfer as a string
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+		// disable cert verification
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
 		// $output contains the output string
 		$output = curl_exec($ch);
 

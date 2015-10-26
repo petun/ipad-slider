@@ -37,15 +37,15 @@ class RssResourceHandler implements IResourceHandler {
 	public function renderHtml() {
 		$articles = $this->_feed->articles();
 		$result = [];
-		foreach ($articles as $article) {
+		foreach ($articles as $i => $article) {
+			if ($i >=4 ) {break;}
+
 			$result[] = [
 				'pubDate' => $article->pubDate,
 				'title' => $article->title,
-				'description' => $article->description
+				'description' => $this->_stripTags($article->description)
 			];
 		}
-
-
 
 		$jade = new Jade(array(
 			'prettyprint' => false,
@@ -54,5 +54,20 @@ class RssResourceHandler implements IResourceHandler {
 
 
 		return $jade->render(__DIR__. '/../../frontend/src/jade/resource/rss.jade', ['articles' => $result]);
+	}
+
+	private function _stripTags($str) {
+		$r =  trim(strip_tags($str));
+		$length = 100;
+
+		if (mb_strlen($str, 'utf8') > $length) {
+			$ww = wordwrap($r, $length, "\n");
+			$shortenedString = substr($ww, 0, strpos($ww, "\n")).'...';
+
+			return $shortenedString;
+
+		} else {
+			return $r;
+		}
 	}
 }
