@@ -4,3 +4,4 @@ composer.lock
 app/config.php
 frontend/bower_components
 cache/
+web/

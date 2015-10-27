@@ -9,6 +9,7 @@
 namespace IpadSlider\Handler;
 
 
+use IpadSlider\Application;
 use Jade\Jade;
 use Vinelab\Rss\Rss;
 
@@ -47,13 +48,7 @@ class RssResourceHandler implements IResourceHandler {
 			];
 		}
 
-		$jade = new Jade(array(
-			'prettyprint' => false,
-			'extension' => '.jade',
-		));
-
-
-		return $jade->render(__DIR__. '/../../frontend/src/jade/resource/rss.jade', ['articles' => $result]);
+		return Application::getInstance()->jadeEngine()->render(__DIR__. '/../../frontend/src/jade/resource/rss.jade', ['articles' => $result]);
 	}
 
 	private function _stripTags($str) {

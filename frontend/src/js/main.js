@@ -16,7 +16,7 @@ jQuery(function( $) {
             if (currentIndex < lastIndex) {
                 window.location.reload();
             }
-            //console.log('current - ' + currentIndex + ' last ' + lastIndex);
+            console.log('current - ' + currentIndex + ' last ' + lastIndex);
         });
 
         $fotorama.fotorama();

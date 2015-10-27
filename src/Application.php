@@ -13,12 +13,16 @@ use IpadSlider\Helper\IServiceLocator;
 use IpadSlider\Helper\ServiceLocator;
 use IpadSlider\Model\DbPersistent;
 use IpadSlider\Model\DummyPersistent;
+use Jade\Jade;
 
 class Application {
 
 	private static $_instance;
 
 	private $_config;
+
+	/* @var Jade */
+	private $_jade;
 
 	/* @var IServiceLocator */
 	private $_serviceLocator;
@@ -72,6 +76,20 @@ class Application {
 
 	public function config($key) {
 		return $this->_config[$key];
+	}
+
+	/**
+	 * @return Jade
+	 */
+	public function jadeEngine() {
+		if (empty($this->_jade)) {
+			$this->_jade =  new Jade(array(
+				'prettyprint' => false,
+				'extension' => '.jade',
+			));
+		}
+
+		return $this->_jade;
 	}
 
 } 
