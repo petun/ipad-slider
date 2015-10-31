@@ -2,6 +2,7 @@
     "name": "petun/ipad-slider",
     "description": "description_text",
     "license": "proprietary",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "author's name",
@@ -19,6 +20,7 @@
     "require": {
         "jasny/db-mysql": "^1.1",
         "vinelab/rss": "^1.0",
-        "kylekatarnls/jade-php": "^1.3"
+        "kylekatarnls/jade-php": "^1.3",
+        "php-instagram-api/php-instagram-api": "dev-master"
     }
 }
