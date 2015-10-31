@@ -9,8 +9,7 @@
 namespace IpadSlider\Transport;
 
 
-
-class CurlTransport {
+class CurlTransport implements IHttpTransport {
 
 	/**
 	 * @param $url

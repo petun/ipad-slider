@@ -11,7 +11,8 @@ namespace IpadSlider;
 use IpadSlider\Model\DummyPersistent;
 use IpadSlider\Model\IPersistent;
 
-class Fetcher {
+class Fetcher
+{
 
 	public function processResources() {
 
@@ -23,13 +24,22 @@ class Fetcher {
 		if ($resources) {
 			/** @var \IpadSlider\Model\Resource $resource */
 			foreach ($resources as $resource) {
-				if ($html = $resource->getSerializedData()) {
-					echo $html;
-					$p->changeHtml($resource, $html);
-				} else {
-					echo 'FAILED';
-				}
+				try {
+					$data = $resource->getSerializedData();
+					var_dump($data);
+					$p->changeHtml($resource, $data);
+				} catch (\Exception $exc) {
+					echo $exc->getMessage();
+					$p->changeHtml(
+						$resource, Application::getInstance()->jadeEngine()->render(
+						__DIR__ . '/../frontend/src/jade/resource/error.jade',
+							['message' => $exc->getMessage(),
+								'stack' => $exc->getTraceAsString()
+							]
+					)
+					);
 
+				}
 			}
 		}
 

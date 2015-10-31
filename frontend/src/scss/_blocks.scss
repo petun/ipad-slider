@@ -36,3 +36,128 @@
     }
   }
 }
+
+.error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+
+  h3 {
+    font-size: 16px;
+  }
+}
+
+.weather {
+  .weather__today {
+    margin-bottom: 20px;
+    border-bottom: 1px #eee solid;
+
+    h2 {
+      font-size: 40px;
+      margin: 0 0 10px;
+      line-height: 1;
+      span {
+        padding-left: 20px;
+        font-weight: bold;
+
+      }
+    }
+
+    .weather__code {
+      p {
+        margin: 0;
+        vertical-align: top;
+        span.weather__code-text {
+            vertical-align: top;
+            font-size: 20px;
+            padding-left: 15px;
+            line-height: 70px;
+        }
+      }
+    }
+  }
+
+  .weather__forecasts {
+    .weather__forecast {
+      text-align: center;
+      padding: 10px;
+      //border: 1px #eee solid;
+
+      >div {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px #eee solid;
+        &:last-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+          border-bottom: none;
+        }
+
+      }
+
+      .weather__forecast-date {
+        font-style: italic;
+        font-size: 18px;
+      }
+
+      .weather__forecast-temp {
+        .low {
+          color: #444;
+          font-size: 15px;
+          padding-left: 15px;
+        }
+        .high {
+          font-size: 25px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.weather-icon {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+
+  &.weather-icon-1 {
+    background-image: url('../img/weather/1.png');
+  }
+
+  &.weather-icon-2 {
+    background-image: url('../img/weather/2.png');
+  }
+  &.weather-icon-3 {
+    background-image: url('../img/weather/3.png');
+  }
+
+  &.weather-icon-26 {
+    background-image: url('../img/weather/26.png');
+  }
+
+  &.weather-icon-27 {
+    background-image: url('../img/weather/27.png');
+  }
+
+  &.weather-icon-28 {
+    background-image: url('../img/weather/28.png');
+  }
+
+  &.weather-icon-29 {
+    background-image: url('../img/weather/29.png');
+  }
+
+  &.weather-icon-30 {
+    background-image: url('../img/weather/30.png');
+  }
+
+  &.weather-icon-39 {
+    background-image: url('../img/weather/39.png');
+  }
+
+  &.weather-icon-30 {
+    background-image: url('../img/weather/30.png');
+  }
+}

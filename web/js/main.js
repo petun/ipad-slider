@@ -16,7 +16,7 @@ jQuery(function( $) {
             if (currentIndex < lastIndex) {
                 window.location.reload();
             }
-            //console.log('current - ' + currentIndex + ' last ' + lastIndex);
+            console.log('current - ' + currentIndex + ' last ' + lastIndex);
         });
 
         $fotorama.fotorama();
@@ -43,8 +43,4 @@ jQuery(function( $) {
             // Initialize fotorama manually
             .fotorama();*/
     });
-});
-jQuery(function( $) {
-    console.log('contacts page here to');
-    $('a').attr('href', 'fuck');
 });

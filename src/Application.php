@@ -13,6 +13,7 @@ use IpadSlider\Helper\IServiceLocator;
 use IpadSlider\Helper\ServiceLocator;
 use IpadSlider\Model\DbPersistent;
 use IpadSlider\Model\DummyPersistent;
+use IpadSlider\Transport\CurlTransport;
 use Jade\Jade;
 
 class Application {
@@ -68,6 +69,7 @@ class Application {
 	private function _initServiceLocator() {
 		$this->_serviceLocator = new ServiceLocator();
 		$this->_serviceLocator->addService('IPersistent', new DbPersistent($this->_config['database']));
+		$this->_serviceLocator->addService('IHttpTransport', new CurlTransport());
 	}
 
 	public function getService($service) {

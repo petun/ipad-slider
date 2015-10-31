@@ -1,0 +1,20 @@
+.weather
+    .weather__today
+        h2 #{data.city}
+            span #{data.temperature} &deg;C
+        .weather__code
+            p
+                span.weather-icon(class=data.codeClass)
+                span.weather__code-text #{data.condition}, #{data.wind}
+    .weather__forecasts
+        .row
+            each forecast in data.forecasts
+                .col-md-3.col-20percent
+                    .weather__forecast
+                        .weather__forecast-date= forecast.date
+                        .weather__forecast-temp
+                            span.high= forecast.high
+                            span.low= forecast.low
+                        div
+                            span.weather-icon(class=forecast.codeClass)
+                        .weather__forecast-cond= forecast.condition
