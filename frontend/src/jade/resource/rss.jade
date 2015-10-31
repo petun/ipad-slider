@@ -2,5 +2,5 @@
     each article in articles
         .rss-feed__item
             .rss-feed__date= article.pubDate
-            a= article.title
+            a(href=article.link target="_blank")= article.title
             .rss-feed__content!= article.description

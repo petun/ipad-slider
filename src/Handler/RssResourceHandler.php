@@ -42,6 +42,7 @@ class RssResourceHandler implements IResourceHandler {
 			if ($i >=4 ) {break;}
 
 			$result[] = [
+'link' => $article->link,
 				'pubDate' => $article->pubDate,
 				'title' => $article->title,
 				'description' => $this->_stripTags($article->description)
