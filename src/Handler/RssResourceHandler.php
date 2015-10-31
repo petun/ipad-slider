@@ -53,7 +53,7 @@ class RssResourceHandler implements IResourceHandler {
 
 	private function _stripTags($str) {
 		$r =  trim(strip_tags($str));
-		$length = 100;
+		$length = 200;
 
 		if (mb_strlen($str, 'utf8') > $length) {
 			$ww = wordwrap($r, $length, "\n");
