@@ -12,5 +12,12 @@ return [
 		'user' => 'root',
 		'password' => '',
 		'database' => 'ipad_slider'
-	]
+	],
+	'instagram' => [
+		'client_id'         => '',
+		'client_secret'     => '',
+		'redirect_uri'      => '',
+		'scope'             => array( 'basic', 'likes', 'comments', 'relationships' ),
+	],
+	'instagram_token' => '',
 ];

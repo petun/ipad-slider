@@ -81,8 +81,6 @@ class WeatherResourceHandler implements IResourceHandler{
 			'forecasts' => []
 		];
 
-		var_dump($data);
-
 		foreach ($this->_forecasts as $forecast) {
 			$f = (array)$forecast;
 			$f = $f['@attributes'];

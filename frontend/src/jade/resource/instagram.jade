@@ -1,0 +1,20 @@
+.instagram
+    .row
+        each photo in data
+            .col-xs-4
+                .instagram-item
+                    .instagram-item__title
+                        a(href="#") #{photo.user}
+                        span= photo.location
+
+                    .instagram-item__date= photo.date
+
+                    .instagram-item__image
+                        img.img-responsive(src=photo.image)
+                    .instagram-item__comment #{photo.caption}
+
+
+
+
+
+

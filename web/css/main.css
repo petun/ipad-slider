@@ -234,6 +234,16 @@ body { font-size: 12px; font-family: 'Open Sans', Arial, sans-serif; }
 
 .weather-icon.weather-icon-30 { background-image: url("../img/weather/30.png"); }
 
+.weather-icon.weather-icon-46 { background-image: url("../img/weather/46.png"); }
+
+.instagram { padding: 10px; background: #e5e5e5; }
+
+.instagram-item { padding: 10px; background: white; border-radius: 10px; }
+
+.instagram-item .instagram-item__title a { display: block; }
+
+.instagram-item .instagram-item__title span { display: block; }
+
 #wrapper { width: 100%; }
 
 .col-20percent { width: 20% !important; }
