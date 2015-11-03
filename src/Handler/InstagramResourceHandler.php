@@ -40,7 +40,7 @@ class InstagramResourceHandler implements IResourceHandler {
 				'image' => $photo->getLowResImage()->url,
 				'user' => $photo->getUser()->getUserName(),
 				'location' => $photo->getLocation() ? $photo->getLocation()->getName() : '',
-				'date' => Date::parse($photo->getCreatedTime())->ago(),
+				'date' => Date::createFromTimestamp($photo->getCreatedTime())->ago(),
 				'caption' => $photo->getCaption() ? StrHelper::removeEmoji($photo->getCaption()->getText())  : '',
 			];
 
