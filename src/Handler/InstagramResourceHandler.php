@@ -9,8 +9,6 @@
 namespace IpadSlider\Handler;
 
 
-use HeyUpdate\Emoji\Emoji;
-use HeyUpdate\Emoji\EmojiIndex;
 use Instagram\Instagram;
 use IpadSlider\Application;
 use IpadSlider\Helper\StrHelper;
