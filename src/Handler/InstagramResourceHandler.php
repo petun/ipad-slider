@@ -33,7 +33,7 @@ class InstagramResourceHandler implements IResourceHandler {
 	public function renderHtml() {
 		$media = $this->_currentUser->getFeed(['count' => 3]);
 		$data = [];
-		$emoji = new Emoji(new EmojiIndex(), '//twemoji.maxcdn.com/36x36/%s.png');
+
 		foreach ($media as $photo) {
 			/** @var \Instagram\Media $photo */
 			$data[] = [
