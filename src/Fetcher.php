@@ -25,9 +25,10 @@ class Fetcher
 			/** @var \IpadSlider\Model\Resource $resource */
 			foreach ($resources as $resource) {
 				try {
+					echo "Get resource  - " . $resource->name . "\n";
 					$data = $resource->getSerializedData();
-					var_dump($data);
 					$p->changeHtml($resource, $data);
+					echo "Done \n";
 				} catch (\Exception $exc) {
 					echo $exc->getMessage();
 					$p->changeHtml(

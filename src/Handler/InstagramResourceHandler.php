@@ -43,8 +43,6 @@ class InstagramResourceHandler implements IResourceHandler {
 				'date' => Date::createFromTimestamp($photo->getCreatedTime())->ago(),
 				'caption' => $photo->getCaption() ? StrHelper::removeEmoji($photo->getCaption()->getText())  : '',
 			];
-
-			file_put_contents("test.txt", print_r($data,true));
 		}
 
 		return Application::getInstance()->jadeEngine()->render(__DIR__. '/../../frontend/src/jade/resource/instagram.jade', ['data' => $data]);
