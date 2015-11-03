@@ -11,10 +11,13 @@
             each forecast in data.forecasts
                 .col-xs-3.col-20percent
                     .weather__forecast
-                        .weather__forecast-date= forecast.date
+                        .weather__forecast-date
+                            :php
+                                | Jenssegers\Date\Date::setLocale('ru'); echo Jenssegers\Date\Date::parse($forecast['date'])->format('l');
                         .weather__forecast-temp
                             span.high= forecast.high
                             span.low= forecast.low
                         div
                             span.weather-icon(class=forecast.codeClass)
                         .weather__forecast-cond= forecast.condition
+                        .weather__forecast-cond= forecast.text

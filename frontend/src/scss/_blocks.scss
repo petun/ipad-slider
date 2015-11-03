@@ -103,11 +103,11 @@
       .weather__forecast-temp {
         .low {
           color: #444;
-          font-size: 15px;
+          font-size: 25px;
           padding-left: 15px;
         }
         .high {
-          font-size: 25px;
+          font-size: 40px;
           font-weight: bold;
         }
       }
@@ -230,13 +230,24 @@
   background: white;
   border-radius: 10px;
   .instagram-item__title {
-    a {
-      display: block;  
-    }
-    span {
+    height: 40px;
+    position: relative;
+    span,strong {
       display: block;
     }
+    .instagram-item__date {
+      position: absolute;
+      font-size: 11px;
+      color: #6F6F6F;
+      right: 0;
+      top: 0;
+    }
+
     
+  }
+
+  .instagram-item__image {
+    margin: 0 0 5px;
   }
   
 }

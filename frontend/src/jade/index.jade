@@ -5,5 +5,7 @@ block content
       each slide in slides
           div.slide
               .slide__title= slide.resource.name
-                  span= slide.resource.refresh_date
+                  span
+                    :php
+                      | echo $slide->resource->getAgo();
               .slide__content!= slide.resource.html

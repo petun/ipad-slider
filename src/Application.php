@@ -15,8 +15,10 @@ use IpadSlider\Model\DbPersistent;
 use IpadSlider\Model\DummyPersistent;
 use IpadSlider\Transport\CurlTransport;
 use Jade\Jade;
+use Jenssegers\Date\Date;
 
-class Application {
+class Application
+{
 
 	private static $_instance;
 
@@ -29,11 +31,12 @@ class Application {
 	private $_serviceLocator;
 
 	private function __construct() {
-		$this->_config = require_once(dirname(__FILE__).'/../app/config.php');
+		$this->_config = require_once(dirname(__FILE__) . '/../app/config.php');
 
 	}
 
 	public function init() {
+		Date::setLocale('ru');
 		$this->_initServiceLocator();
 	}
 
@@ -43,16 +46,15 @@ class Application {
 	 *
 	 * @return void
 	 */
-	private function __clone()
-	{
+	private function __clone() {
 	}
+
 	/**
 	 * prevent from being unserialized
 	 *
 	 * @return void
 	 */
-	private function __wakeup()
-	{
+	private function __wakeup() {
 	}
 
 

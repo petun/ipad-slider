@@ -11,6 +11,7 @@ namespace IpadSlider\Handler;
 
 use IpadSlider\Application;
 use Jade\Jade;
+use Jenssegers\Date\Date;
 use Vinelab\Rss\Rss;
 
 class RssResourceHandler implements IResourceHandler {
@@ -43,7 +44,7 @@ class RssResourceHandler implements IResourceHandler {
 
 			$result[] = [
 'link' => $article->link,
-				'pubDate' => $article->pubDate,
+				'pubDate' => Date::parse($article->pubDate)->ago(),
 				'title' => $article->title,
 				'description' => $this->_stripTags($article->description)
 			];

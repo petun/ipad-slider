@@ -50,7 +50,7 @@ gulp.task('jade', function() {
         pageTitle: 'App Page Title'
     };
 
-    return gulp.src("./src/jade/*.jade")
+    return gulp.src("./src/jade/samples.jade")
         .pipe(jade({
             locals: YOUR_LOCALS,
             pretty: true
@@ -76,12 +76,12 @@ gulp.task('images', function() {
 
 gulp.task('watch', function () {
     gulp.run('styles');
-    //gulp.run('jade');
+    gulp.run('jade');
     gulp.run('scripts');
 
     livereload.listen();
     gulp.watch('./src/scss/**/*.scss', ['styles']);
-    //gulp.watch('./src/jade/**/*.jade', ['jade']);
+    gulp.watch('./src/jade/**/*.jade', ['jade']);
     gulp.watch('./src/js/**/*.js', ['scripts']);
 });
 

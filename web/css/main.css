@@ -174,7 +174,7 @@ body { font-size: 12px; font-family: 'Open Sans', Arial, sans-serif; }
 
 .slide { padding: 20px; }
 
-.slide .slide__title { font-weight: bold; font-size: 30px; text-transform: uppercase; padding: 0 0 15px; line-height: 1; border-bottom: 1px #095dff solid; margin-bottom: 15px; }
+.slide .slide__title { font-weight: bold; font-size: 30px; text-transform: uppercase; padding: 0 0 15px; line-height: 1; border-bottom: 1px #d2d2d2 solid; margin-bottom: 15px; }
 
 .slide .slide__title span { padding-left: 10px; font-weight: normal; color: #333; font-size: 14px; }
 
@@ -208,9 +208,9 @@ body { font-size: 12px; font-family: 'Open Sans', Arial, sans-serif; }
 
 .weather .weather__forecasts .weather__forecast .weather__forecast-date { font-style: italic; font-size: 18px; }
 
-.weather .weather__forecasts .weather__forecast .weather__forecast-temp .low { color: #444; font-size: 15px; padding-left: 15px; }
+.weather .weather__forecasts .weather__forecast .weather__forecast-temp .low { color: #444; font-size: 25px; padding-left: 15px; }
 
-.weather .weather__forecasts .weather__forecast .weather__forecast-temp .high { font-size: 25px; font-weight: bold; }
+.weather .weather__forecasts .weather__forecast .weather__forecast-temp .high { font-size: 40px; font-weight: bold; }
 
 .weather-icon { width: 70px; height: 70px; display: inline-block; background-position: 0 0; background-repeat: no-repeat; }
 
@@ -274,9 +274,13 @@ body { font-size: 12px; font-family: 'Open Sans', Arial, sans-serif; }
 
 .instagram-item { padding: 10px; background: white; border-radius: 10px; }
 
-.instagram-item .instagram-item__title a { display: block; }
+.instagram-item .instagram-item__title { height: 40px; position: relative; }
 
-.instagram-item .instagram-item__title span { display: block; }
+.instagram-item .instagram-item__title span, .instagram-item .instagram-item__title strong { display: block; }
+
+.instagram-item .instagram-item__title .instagram-item__date { position: absolute; font-size: 11px; color: #6F6F6F; right: 0; top: 0; }
+
+.instagram-item .instagram-item__image { margin: 0 0 5px; }
 
 #wrapper { width: 100%; }
 

@@ -8,6 +8,7 @@
 
 namespace IpadSlider\Model;
 use IpadSlider\Factory\ResourceHandlerFactory;
+use Jenssegers\Date\Date;
 
 /**
  * Class Resource
@@ -30,6 +31,9 @@ class Resource {
 	/* @var string */
 	public $type;
 
+	/* @var string */
+	public $refresh_date;
+
 	/**
 	 * @return null
 	 */
@@ -39,6 +43,10 @@ class Resource {
 			return $type->renderHtml();
 		}
 		return null;
+	}
+
+	public function getAgo() {
+		return Date::parse($this->refresh_date)->ago();
 	}
 
 }
