@@ -1,0 +1,8 @@
+.instagram.-small
+    each photo in data
+            .instagram-item
+                .instagram-item__title
+                    strong #{photo.user}
+                .instagram-item__image
+                    img.img-responsive(src=photo.image)
+                .instagram-item__comment= photo.date

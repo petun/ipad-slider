@@ -1,6 +1,9 @@
 .rss-feed
     each article in articles
         .rss-feed__item
-            .rss-feed__date= article.pubDate
-            a(href=article.link target="_blank")= article.title
-            .rss-feed__content!= article.description
+            .rss-feed__preview
+                a(href=article.link target="_blank"): img(src=article.img alt="" class="img-responsive")
+            .rss-feed__content
+                .rss-feed__date= article.pubDate
+                a(href=article.link target="_blank")= article.title
+                .rss-feed__text!= article.description

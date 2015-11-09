@@ -22,4 +22,22 @@ class StrHelperText extends PHPUnit_Framework_TestCase {
 		}
 	}
 
+	public function testWordWrap() {
+
+		$source = [
+			'<p>Тестовый текст очень длинный и длинный и длинный и длинный и длинный и длинный и длинный и длинный. И потом еще текст текст текст11102л',
+			'<p>Тестовый текст</p><div style="test"></div><div style="test"></div><div style="test"></div><div style="test"></div><div style="test"></div><div style="test"></div><div style="test"></div><p>А тут большой текст</p>',
+			"1\nВторая строка\nТретья строка.ный и длинный и длинный и  ный и длинный и длинный и ный и длинный и длинный и "
+		];
+
+
+
+		foreach ($source as $s) {
+			$result = StrHelper::wordWrap($s, 100);
+			$length = mb_strlen($result);
+
+			$this->assertTrue($length < 120 && $length > 10);
+		}
+	}
+
 }

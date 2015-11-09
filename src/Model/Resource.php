@@ -34,11 +34,14 @@ class Resource {
 	/* @var string */
 	public $refresh_date;
 
+	/* @var string */
+	public $params;
+
 	/**
 	 * @return null
 	 */
 	public function getSerializedData() {
-		$type = ResourceHandlerFactory::get($this->type, $this->url);
+		$type = ResourceHandlerFactory::get($this->type, $this->url, $this->_getParams());
 		if ($type->fetchData($this->url)) {
 			return $type->renderHtml();
 		}
@@ -47,6 +50,11 @@ class Resource {
 
 	public function getAgo() {
 		return Date::parse($this->refresh_date)->ago();
+	}
+
+	private function _getParams() {
+		$json = json_decode($this->params, true);
+		return $json ? $json : [];
 	}
 
 }

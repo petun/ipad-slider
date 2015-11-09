@@ -19,6 +19,10 @@ class InstagramResourceHandler implements IResourceHandler {
 	/* @var \Instagram\CurrentUser */
 	private $_currentUser;
 
+	public $style;
+
+	public $limit;
+
 	public function __construct($url) {
 
 	}
@@ -31,7 +35,7 @@ class InstagramResourceHandler implements IResourceHandler {
 	}
 
 	public function renderHtml() {
-		$media = $this->_currentUser->getFeed(['count' => 3]);
+		$media = $this->_currentUser->getFeed();
 		$data = [];
 
 		foreach ($media as $photo) {
@@ -45,7 +49,13 @@ class InstagramResourceHandler implements IResourceHandler {
 			];
 		}
 
-		return Application::getInstance()->jadeEngine()->render(__DIR__. '/../../frontend/src/jade/resource/instagram.jade', ['data' => $data]);
+		if ($this->limit) {
+			$data = array_chunk($data, $this->limit)[0];
+		}
+
+		$template = $this->style ? 'instagram_' . $this->style : 'instagram';
+
+		return Application::getInstance()->jadeEngine()->render(__DIR__. '/../../frontend/src/jade/resource/'.$template.'.jade', ['data' => $data]);
 	}
 
 

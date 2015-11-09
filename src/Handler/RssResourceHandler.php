@@ -55,23 +55,12 @@ class RssResourceHandler implements IResourceHandler {
 			'link' => $article->link,
 			'pubDate' => Date::parse($article->pubDate)->ago(),
 			'title' => $article->title,
-			'description' => $this->_stripTags($article->description),
+			'description' => StrHelper::wordWrap($article->description),
 			'img' => $img
 		];
 	}
 
 	private function _stripTags($str) {
-		$r =  trim(strip_tags($str));
-		$length = 200;
 
-		if (mb_strlen($str, 'utf8') > $length) {
-			$ww = wordwrap($r, $length, "\n");
-			$shortenedString = substr($ww, 0, strpos($ww, "\n")).'...';
-
-			return $shortenedString;
-
-		} else {
-			return $r;
-		}
 	}
 }

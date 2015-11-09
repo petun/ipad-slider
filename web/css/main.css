@@ -184,9 +184,11 @@ body { font-size: 12px; font-family: 'Open Sans', Arial, sans-serif; }
 
 .rss-feed .rss-feed__item:after { clear: both; }
 
-.rss-feed .rss-feed__item .rss-feed__preview { width: 100px; height: 100px; float: left; }
+.rss-feed .rss-feed__item .rss-feed__preview { width: 100px; height: 100px; float: left; position: relative; }
 
-.rss-feed .rss-feed__item .rss-feed__preview img { max-width: 100px; max-height: 100px; }
+.rss-feed .rss-feed__item .rss-feed__preview a { display: block; position: absolute; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); }
+
+.rss-feed .rss-feed__item .rss-feed__preview a img { max-width: 100px; max-height: 100px; }
 
 .rss-feed .rss-feed__item .rss-feed__content { margin-left: 115px; }
 

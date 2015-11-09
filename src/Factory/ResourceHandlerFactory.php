@@ -19,10 +19,20 @@ class ResourceHandlerFactory {
 	 * @return IResourceHandler
 	 * @throws \Exception
 	 */
-	public static function get($className, $url) {
+	public static function get($className, $url, array $parameters = []) {
 		$fullClassName = '\\IpadSlider\\Handler\\' . ucfirst($className)  . 'ResourceHandler';
 		if (class_exists($fullClassName)) {
-			return new $fullClassName($url);
+			$result =  new $fullClassName($url);
+
+			if ($parameters) {
+				foreach ($parameters as $key => $value) {
+					if (property_exists($fullClassName, $key)) {
+						$result->{$key} = $value;
+					}
+				}
+			}
+
+			return $result;
 		}
 
 		throw new \Exception('Error. Class '.$fullClassName . ' not found');

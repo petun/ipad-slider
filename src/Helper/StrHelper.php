@@ -49,4 +49,21 @@ class StrHelper {
 		return $default;
 	}
 
+	public static function wordWrap($str, $length = 200) {
+		$r =  trim(strip_tags($str));
+		$r = str_replace("\n"," ", $r);
+
+
+		if (mb_strlen($r, 'utf8') > $length) {
+
+			$ww = wordwrap($r, $length, "\n");
+			$shortenedString = substr($ww, 0, strpos($ww, "\n")).'...';
+
+			return $shortenedString;
+
+		} else {
+			return $r;
+		}
+	}
+
 } 

@@ -21,13 +21,13 @@ class DbPersistent implements IPersistent
 	}
 
 	public function getAllResources() {
-		$resources = $this->_db->fetchAll('SELECT id, name, type, url,refresh_date FROM resource');
+		$resources = $this->_db->fetchAll('SELECT id, name, type, url,refresh_date,params FROM resource');
 		return $this->_arrayToObjects($resources, '\\IpadSlider\\Model\\Resource');
 	}
 
 	public function getAllSlides() {
 		$resource = $this->_db->fetchAll(
-			'SELECT s.id, s.position, s.resource_id, r.name, r.url, r.type, r.html, r.refresh_date FROM slide s JOIN resource r ON (s.resource_id = r.id) ORDER BY s.position'
+			'SELECT s.id, s.position, s.resource_id, r.name, r.url, r.type, r.html, r.refresh_date, r.params FROM slide s JOIN resource r ON (s.resource_id = r.id) ORDER BY s.position'
 		);
 
 		$slides = [];
@@ -35,7 +35,7 @@ class DbPersistent implements IPersistent
 
 			/** @var Slide $slide */
 			$slide = $this->_arrayToObjects([$r], '\\IpadSlider\\Model\\Slide', ['id', 'position'])[0];
-			$slide->resource = $this->_arrayToObjects([$r], '\\IpadSlider\\Model\\Resource', ['name', 'url', 'type', 'html','refresh_date'])[0];
+			$slide->resource = $this->_arrayToObjects([$r], '\\IpadSlider\\Model\\Resource', ['name', 'url', 'type', 'html','refresh_date','params'])[0];
 			$slides[] =  $slide;
 		}
 

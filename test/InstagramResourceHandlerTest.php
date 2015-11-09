@@ -29,4 +29,16 @@ class InstagramResourceHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->assertContains('instagram', $html);
 		$this->assertContains('instagram-item__title', $html);
 	}
+
+	public function testRenderSmallHtml() {
+		Application::getInstance()->init();
+		$h = new InstagramResourceHandler('');
+		$h->style = 'small';
+
+		$h->fetchData();
+		$html = $h->renderHtml();
+
+		$this->assertContains('instagram -small', $html);
+		$this->assertContains('instagram-item__image', $html);
+	}
 }
