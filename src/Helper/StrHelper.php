@@ -9,6 +9,8 @@
 namespace IpadSlider\Helper;
 
 
+use Sunra\PhpSimple\HtmlDomParser;
+
 class StrHelper {
 
 	public static function removeEmoji($text) {
@@ -36,6 +38,15 @@ class StrHelper {
 		$clean_text = preg_replace($regexDingbats, '', $clean_text);
 
 		return $clean_text;
+	}
+
+	public static function getImgSrcFromHtml($html, $default = '') {
+		$dom = HtmlDomParser::str_get_html( $html );
+		$images = $ret = $dom->find('img');
+		if ($images) {
+			return $images[0]->src;
+		}
+		return $default;
 	}
 
 } 
