@@ -1,0 +1,3 @@
+[submodule "php-emoji"]
+	path = php-emoji
+	url = https://github.com/iamcal/php-emoji.git

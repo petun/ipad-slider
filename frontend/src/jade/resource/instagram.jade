@@ -10,9 +10,7 @@
 
                     .instagram-item__image
                         img.img-responsive(src=photo.image)
-                    .instagram-item__comment
-                        :php
-                            | echo strip_tags($photo['caption']);
+                    .instagram-item__comment!= photo.caption
 
 
 

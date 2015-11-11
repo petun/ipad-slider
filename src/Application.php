@@ -40,6 +40,10 @@ class Application
 		$this->_initServiceLocator();
 	}
 
+	public function getBasePath() {
+		return __DIR__ . '/..';
+	}
+
 
 	/**
 	 * prevent the instance from being cloned

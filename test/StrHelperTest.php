@@ -40,4 +40,12 @@ class StrHelperText extends PHPUnit_Framework_TestCase {
 		}
 	}
 
+
+	public function testRemoveEmoji() {
+		$text = '💙👆🏼🤗☺️';
+
+		$result = StrHelper::removeEmoji($text);
+		var_dump($result);
+	}
+
 }

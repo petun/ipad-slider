@@ -8,36 +8,26 @@
 
 namespace IpadSlider\Helper;
 
-
+use IpadSlider\Application;
 use Sunra\PhpSimple\HtmlDomParser;
 
 class StrHelper {
 
-	public static function removeEmoji($text) {
+	public static function removeEmoji($data) {
 
-		$clean_text = "";
+		require_once(Application::getInstance()->getBasePath(). '/php-emoji/emoji.php');
 
-		// Match Emoticons
-		$regexEmoticons = '/[\x{1F600}-\x{1F64F}]/u';
-		$clean_text = preg_replace($regexEmoticons, '', $text);
+		$data = emoji_docomo_to_unified($data);   # DoCoMo devices
+		$data = emoji_kddi_to_unified($data);     # KDDI & Au devices
+		$data = emoji_softbank_to_unified($data); # Softbank & pre-iOS6 Apple devices
+		$data = emoji_google_to_unified($data);   # Google Android devices
 
-		// Match Miscellaneous Symbols and Pictographs
-		$regexSymbols = '/[\x{1F300}-\x{1F5FF}]/u';
-		$clean_text = preg_replace($regexSymbols, '', $clean_text);
 
-		// Match Transport And Map Symbols
-		$regexTransport = '/[\x{1F680}-\x{1F6FF}]/u';
-		$clean_text = preg_replace($regexTransport, '', $clean_text);
+		$data = emoji_unified_to_html($data);
 
-		// Match Miscellaneous Symbols
-		$regexMisc = '/[\x{2600}-\x{26FF}]/u';
-		$clean_text = preg_replace($regexMisc, '', $clean_text);
+		$data = preg_replace( '/[^а-яa-z0-9 _\-\+\&\.\,\!@#\$\n\t<>=\/"\(\)\*]/ui', '',$data);
 
-		// Match Dingbats
-		$regexDingbats = '/[\x{2700}-\x{27BF}]/u';
-		$clean_text = preg_replace($regexDingbats, '', $clean_text);
-
-		return $clean_text;
+		return $data;
 	}
 
 	public static function getImgSrcFromHtml($html, $default = '') {

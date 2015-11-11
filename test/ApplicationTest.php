@@ -21,4 +21,16 @@ class ApplicationTest extends PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('IpadSlider\Transport\CurlTransport', $trans);
 	}
 
+	public function testConfig() {
+		Application::getInstance()->init();
+		$conf = Application::getInstance()->config('database');
+		$this->assertTrue(is_array($conf));
+	}
+
+	public function testBasePath() {
+		Application::getInstance()->init();
+		$conf = Application::getInstance()->getBasePath();
+		var_dump($conf);
+	}
+
 }
