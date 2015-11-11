@@ -306,6 +306,22 @@ body { font-size: 12px; font-family: 'Open Sans', Arial, sans-serif; }
 
 .instagram.-small .instagram-item img { width: 180px; height: 180px; }
 
+.twitter .twitter-item { padding-bottom: 10px; border-bottom: 1px #eee solid; margin-bottom: 10px; }
+
+.twitter-item { position: relative; }
+
+.twitter-item .twitter-item__preview { position: absolute; left: 0; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); }
+
+.twitter-item .twitter-item__preview img { width: 44px; height: 44px; }
+
+.twitter-item .twitter-item__text { margin-left: 54px; }
+
+.twitter-item .twitter-item__text .twitter-item__title { font-weight: bold; }
+
+.twitter-item .twitter-item__text .twitter-item__content { font-size: 15px; }
+
+.twitter-item .twitter-item__text .twitter-item__date { color: #828282; }
+
 #wrapper { width: 100%; }
 
 .col-20percent { width: 20% !important; }

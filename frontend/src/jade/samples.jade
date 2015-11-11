@@ -1,6 +1,20 @@
 extends ./layout/layout
 block content
     div.slide
+        .slide__title Twitter
+            span 2015-12-12 12:00:00
+        .slide__content
+            .twitter
+                each i in [1,2,3,4]
+                    .twitter-item
+                        .twitter-item__preview
+                            img(src="http://pbs.twimg.com/profile_images/661080596886781952/rLQR4VJl_normal.png")
+                        .twitter-item__text
+                            .twitter-item__title Google
+                            .twitter-item__content Музыка задаёт форму произведения, или наоборот? Проверьте в этом #Chrome эксперименте goo.gl/NWTUfs. pic.twitter.com/FYqIlKQWqQ
+                            .twitter-item__date 2 часа назад
+
+    div.slide
         .slide__title News
             span 2015-12-12 12:00:00
         .slide__content

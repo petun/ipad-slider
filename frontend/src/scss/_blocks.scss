@@ -295,3 +295,41 @@
     }
   }
 }
+
+.twitter {
+  .twitter-item {
+    padding-bottom: 10px;
+    border-bottom: 1px #eee solid;
+    margin-bottom: 10px;
+  }
+}
+
+.twitter-item {
+  position: relative;
+  .twitter-item__preview {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    img {
+      width: 44px;
+      height: 44px;
+
+    }
+  }
+
+  .twitter-item__text {
+    margin-left: 44px + 10px;
+    .twitter-item__title {
+      font-weight: bold;
+    }
+
+    .twitter-item__content {
+      font-size: 15px;
+    }
+
+    .twitter-item__date {
+      color: $cl-gray-text;
+    }
+  }
+}

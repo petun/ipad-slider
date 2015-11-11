@@ -1,0 +1,9 @@
+.twitter
+    each twit in data
+        .twitter-item
+            .twitter-item__preview
+                img(src=twit.userImage)
+            .twitter-item__text
+                .twitter-item__title=twit.userName
+                .twitter-item__content!= twit.text
+                .twitter-item__date=twit.created
