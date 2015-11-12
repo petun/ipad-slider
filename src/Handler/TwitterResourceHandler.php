@@ -10,6 +10,7 @@ namespace IpadSlider\Handler;
 
 
 use IpadSlider\Application;
+use IpadSlider\Helper\StrHelper;
 use Jenssegers\Date\Date;
 use TwitterAPIExchange;
 
@@ -50,7 +51,7 @@ class TwitterResourceHandler implements IResourceHandler {
 					'userImage' => $tweet->user->profile_image_url,
 					'userName' => $tweet->user->name,
 					'created' =>  Date::parse($tweet->created_at)->ago(),
-					'text' => $tweet->text,
+					'text' => StrHelper::removeEmoji($tweet->text),
 					'source' => $tweet->source,
 				];
 			}

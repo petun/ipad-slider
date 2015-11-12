@@ -25,7 +25,7 @@ class StrHelper {
 
 		$data = emoji_unified_to_html($data);
 
-		$data = preg_replace( '/[^а-яa-z0-9 _\-\+\&\.\,\!@#\$\n\t<>=\/"\(\)\*]/ui', '',$data);
+		$data = preg_replace( '/[^а-яa-z0-9 _\-\+\&\.\,\!@#\$\n\t<>=\/"\(\)\*:]/ui', '',$data);
 
 		return $data;
 	}
