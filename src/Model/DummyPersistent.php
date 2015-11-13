@@ -51,4 +51,8 @@ class DummyPersistent implements IPersistent {
 	public function __construct($config = []) {
 		// TODO: Implement __construct() method.
 	}
+
+	public function getSlide($id) {
+		// TODO: Implement getSlide() method.
+	}
 }

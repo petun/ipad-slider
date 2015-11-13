@@ -71,4 +71,15 @@ class DbPersistent implements IPersistent
 			}, $data
 		);
 	}
+
+	//todo Refactor.. recode with sql query
+	public function getSlide($id) {
+		$slides = $this->getAllSlides();
+
+		$slides = array_filter($slides, function($e) use ($id) {
+			return $e->id == $id;
+		});
+
+		return $slides[0];
+	}
 }

@@ -17,5 +17,11 @@ interface IPersistent {
 
 	public function getAllSlides();
 
+	/**
+	 * @param $id
+	 * @return Slide
+	 */
+	public function getSlide($id);
+
 	public function changeHtml(Resource $resource, $html);
 }

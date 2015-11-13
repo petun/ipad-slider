@@ -10,27 +10,32 @@ use IpadSlider\Application;
 
 class ApplicationTest extends PHPUnit_Framework_TestCase {
 
+	public function setup() {
+		Application::getInstance()->init();
+	}
+
 	/**
 	 *
 	 */
 	public function testServiceLocator() {
-		Application::getInstance()->init();
-
 		$trans  = Application::getInstance()->getService('IHttpTransport');
-
 		$this->assertInstanceOf('IpadSlider\Transport\CurlTransport', $trans);
 	}
 
 	public function testConfig() {
-		Application::getInstance()->init();
 		$conf = Application::getInstance()->config('database');
 		$this->assertTrue(is_array($conf));
 	}
 
 	public function testBasePath() {
-		Application::getInstance()->init();
 		$conf = Application::getInstance()->getBasePath();
 		var_dump($conf);
+	}
+
+	public function testHandleRequest() {
+		$request = [];
+		Application::getInstance()->handleRequest($request);
+
 	}
 
 }

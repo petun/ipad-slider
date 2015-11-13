@@ -45,6 +45,28 @@ class Application
 	}
 
 
+	public function handleRequest($request) {
+		$controller = 'home';
+		$action = 'index';
+		if (isset($request['controller'])) {
+			$controller = $request['controller'];
+		}
+
+		if (isset($request['action'])) {
+			$action = $request['action'];
+		}
+
+		$controllerClassName = '\\IpadSlider\\Controller\\' . ucfirst($controller)  . 'Controller';
+		if (class_exists($controllerClassName)) {
+			$c = new $controllerClassName();
+			$c->{$action}($request);
+
+		} else {
+			throw new \Exception("Class " . $controllerClassName . ' not exists');
+		}
+	}
+
+
 	/**
 	 * prevent the instance from being cloned
 	 *
