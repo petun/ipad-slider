@@ -80,6 +80,6 @@ class DbPersistent implements IPersistent
 			return $e->id == $id;
 		});
 
-		return $slides[0];
+		return !empty($slides) ? array_shift($slides) : false;
 	}
 }

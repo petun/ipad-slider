@@ -174,9 +174,19 @@ body { font-size: 12px; font-family: 'Open Sans', Arial, sans-serif; }
 
 .slide { padding: 10px 15px; }
 
-.slide .slide__title { font-weight: bold; font-size: 30px; text-transform: uppercase; padding: 0 0 10px; line-height: 1; border-bottom: 1px #d2d2d2 solid; margin-bottom: 10px; }
+.slide .slide__title { font-weight: bold; font-size: 30px; text-transform: uppercase; padding: 0 0 10px; line-height: 1; border-bottom: 1px #d2d2d2 solid; margin-bottom: 10px; position: relative; }
 
-.slide .slide__title span { padding-left: 10px; font-weight: normal; color: #828282; font-size: 14px; }
+.slide .slide__title .slide__date { padding-left: 10px; font-weight: normal; color: #828282; font-size: 14px; }
+
+.slide .slide__title .slide__buttons { position: absolute; right: 0; top: 0; line-height: 1; }
+
+.slide .slide__title .slide__buttons a.slide__refresh { padding-left: 10px; }
+
+.slide .slide__title .slide__buttons a.slide__refresh span { font-size: 24px; font-weight: normal; }
+
+.slide__loader { background: url("../img/ajax-loader.gif") no-repeat 0 0; width: 24px; height: 24px; display: none; }
+
+.slide__loader.-loading { display: inline-block; }
 
 .rss-feed .rss-feed__item { padding-bottom: 20px; border-bottom: 1px #eee solid; margin-bottom: 20px; zoom: 1; }
 

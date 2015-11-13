@@ -1,11 +1,14 @@
 extends ./layout/layout
 
 block content
-  .fotorama(data-allowfullscreen="true" data-width="100%" data-height="100%" data-autoplay="15000")
+  .fotorama-frame(data-allowfullscreen="true" data-loop="1"  data-width="100%" data-height="100%" data-autoplay="15000")
       each slide in slides
-          div.slide
+          div.slide(data-id=slide.id data-name=slide.resource.name data-refresh_date=slide.resource.refresh_date)
               .slide__title= slide.resource.name
-                  span
+                  span.slide__date
                     :php
                       | echo $slide->resource->getAgo();
+                  .slide__buttons
+                        span.slide__loader
+                        a.slide__refresh: span.glyphicon.glyphicon-refresh
               .slide__content!= slide.resource.html

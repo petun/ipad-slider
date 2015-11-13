@@ -3,8 +3,9 @@ jQuery(function( $) {
 
 
     $(function () {
+        APP.common.init();
 
-        var lastIndex = -1;
+        /*var lastIndex = -1;
 
         var $fotorama = $('.fotorama');
         $fotorama.on('fotorama:showend', function(e, fotorama, extra){
@@ -19,7 +20,7 @@ jQuery(function( $) {
             console.log('current - ' + currentIndex + ' last ' + lastIndex);
         });
 
-        $fotorama.fotorama();
+        $fotorama.fotorama();*/
 
         /*$
             // Listen to the events
