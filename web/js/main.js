@@ -3,48 +3,86 @@
 var APP = APP || {};
 
 APP.config =  {
-    updateUrl: '?controller=slide&action=get&id=%d'
+    updateUrl: '?controller=slide&action=get&id=%d',
+    maxIdleSeconds: 45
 };
 
 
 APP.Slide = function(id) {
     this.id = id;
-    var $allContent = APP.$allSlides.filter('[data-id='+id+']');
-    this.$content = $allContent.find('.slide__content');
-    this.$date = $allContent.find('.slide__date');
-    this.$loader = $allContent.find('.slide__loader');
-    this.$refresh = $allContent.find('.slide__refresh');
-
-    this.registerEvents();
+    this.init(id);
 };
 
 APP.Slide.prototype = {
     registerEvents: function() {
+        console.log('Register events for slide - ' + this.id);
         var self = this;
         $(this.$refresh).on('click', function(e) {
             e.preventDefault();
             APP.ajax.updateSlide(self);
         });
+    },
+    refreshContent: function() {
+        console.log('Refresh slider content with id - ' +  this.id );
+        APP.ajax.updateSlide(this);
+    },
+    init: function(id) {
+        console.log('Init/reinit slide - ' + this.id);
+        var $allContent = APP.$allSlides.filter('[data-id='+id+']');
+        this.$content = $allContent.find('.slide__content');
+        this.$date = $allContent.find('.slide__date');
+        this.$loader = $allContent.find('.slide__loader');
+        this.$refresh = $allContent.find('.slide__refresh');
+
+        this.registerEvents();
     }
 };
 
 
 APP.common = {
     init: function() {
-        APP.$fotorama = $('.fotorama-frame').on('fotorama:ready', function (e, fotorama) {
-            //todo foreach all frames in fotorama// add slide to every data
-        }).fotorama();
-
-
-
-
-        APP.SlideCollection = {};
         APP.$allSlides =  $('.slide');
 
-        APP.$allSlides.each(function(i, e) {
-            var id = $(e).data('id');
-            APP.SlideCollection[id] =  new APP.Slide(id);
-        });
+        APP.$fotorama = $('.fotorama-frame')
+            .on('fotorama:ready', function (e, fotorama) {
+            for (var i in fotorama.data) {
+                var data = fotorama.data[i];
+                console.log('Add frame with id = ' + data.id);
+                data.slide = new APP.Slide(data.id);
+            }
+            console.log('Add frame init complete. Total frames:');
+            console.log(fotorama.data);
+        }).on('fotorama:showend', function(e, fotorama) {
+            if (fotorama.activeFrame.slide) {
+                fotorama.activeFrame.slide.init(fotorama.activeFrame.id);
+
+                // update previous slide
+                var index = fotorama.activeIndex;
+                var nextIndex = index ==0 ? fotorama.data.length-1 : index-1;
+                console.log('index to update - ' + nextIndex);
+
+                fotorama.data[nextIndex].slide.refreshContent();
+            }
+
+            // update idle timeout
+            APP.idle = 0;
+        }).fotorama();
+
+        APP.fotorama = APP.$fotorama.data('fotorama');
+
+        this.monitorActivity();
+    },
+
+    monitorActivity: function() {
+        APP.idle = 0;
+        var int = window.setInterval(function(){
+            APP.idle++;
+            console.log(APP.idle);
+            if (APP.idle > APP.config.maxIdleSeconds) {
+                console.log('idle time on more then max idls - starts autoplay');
+                APP.fotorama.startAutoplay();
+            }
+        }, 1000);
     }
 };
 
